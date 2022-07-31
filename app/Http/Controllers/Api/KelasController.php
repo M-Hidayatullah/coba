@@ -11,7 +11,7 @@ class KelasController extends Controller
 {
     public function index()
     {
-        $data = Kelas::latest()->get();
+        $data = Kelas::all();
         return response([
             'success' => true,
             'message' => 'List Semua data kelas',
@@ -67,7 +67,7 @@ class KelasController extends Controller
     // MENAMPILKAN DATA BERDASARKAN ID
     public function show($id)
     {
-        $data = Kelas ::whereId($id)->first();
+        $data = Kelas ::findOrFail($id);
 
 
         if ($data) {
@@ -88,7 +88,7 @@ class KelasController extends Controller
     //Cara Update data
     public function update(Request $request, $id)
     {
-        $data = Kelas ::where('id', $id)->first();
+        $data = Kelas::findOrFail($id);
 
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
@@ -121,7 +121,7 @@ class KelasController extends Controller
     //CARA MENGAPUS DATA
     public function delete($id)
     {
-        $data = Kelas::where('id', $id)->first();
+        $data = Kelas::findOrFail($id);
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
             return response()->json([

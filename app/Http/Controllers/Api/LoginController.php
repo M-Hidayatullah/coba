@@ -46,4 +46,14 @@ class LoginController extends Controller
             'token'   => $token
         ], 200);
     }
+
+    public function getuser()
+    {
+        $user = User::all();
+        return response([
+            'success' => true,
+            'message' => 'List Semua data user',
+            'data' => $user
+        ], 200);
+    }
 }

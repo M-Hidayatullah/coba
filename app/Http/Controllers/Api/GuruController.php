@@ -11,7 +11,7 @@ class GuruController extends Controller
 {
     public function index()
     {
-        $data = Guru::latest()->get();
+        $data = Guru::all();
         return response([
             'success' => true,
             'message' => 'List Semua data guru',
@@ -75,28 +75,27 @@ class GuruController extends Controller
     // MENAMPILKAN DATA BERDASARKAN ID
     public function show($id)
     {
-        $data = Guru::whereId($id)->first();
-
+        $data = Guru::findOrFail($id);
 
         if ($data) {
             return response()->json([
                 'success' => true,
-                'message' => 'Detail Post!',
+                'message' => 'Detail Guru!',
                 'data'    => $data
             ], 200);
         } else {
             return response()->json([
                 'success' => false,
-                'message' => 'Post Tidak Ditemukan!',
+                'message' => 'Guru Tidak Ditemukan!',
                 'data'    => ''
-            ], 401);
+            ], 404);
         }
     }
 
     //Cara Update data
     public function update(Request $request, $id)
     {
-        $data = Guru::where('id', $id)->first();
+        $data = Guru::findOrFail($id);
 
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
@@ -131,7 +130,7 @@ class GuruController extends Controller
     //CARA MENGAPUS DATA
     public function delete($id)
     {
-        $data = Guru::where('id', $id)->first();
+        $data = Guru::FindOrFail($id);
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
             return response()->json([
