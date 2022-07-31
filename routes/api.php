@@ -29,7 +29,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('/user', App\Http\Controllers\Api\GuruController::class)->name('guru');
+
     Route::get('guru', [GuruController::class, 'index']);
     // GURU -------------------
 // ====> TAMBAH DATA
