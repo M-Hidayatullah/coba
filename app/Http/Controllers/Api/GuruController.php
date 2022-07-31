@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\guru;
+use App\Models\Guru;
 use Illuminate\Support\Facades\Validator;
 
 class GuruController extends Controller
 {
     public function index()
     {
-        $data = guru ::latest()->get();
+        $data = Guru::latest()->get();
         return response([
             'success' => true,
             'message' => 'List Semua data guru',
@@ -50,7 +50,7 @@ class GuruController extends Controller
 
         } else {
 
-            $data = guru ::create([
+            $data = Guru::create([
                 'nip'     => $request->input('nip'),
                 'nama_guru'   => $request->input('nama_guru'),
                 'jk_guru'   => $request->input('jk_guru'),
@@ -75,7 +75,7 @@ class GuruController extends Controller
     // MENAMPILKAN DATA BERDASARKAN ID
     public function show($id)
     {
-        $data = guru ::whereId($id)->first();
+        $data = Guru::whereId($id)->first();
 
 
         if ($data) {
@@ -96,7 +96,7 @@ class GuruController extends Controller
     //Cara Update data
     public function update(Request $request, $id)
     {
-        $data = guru ::where('id', $id)->first();
+        $data = Guru::where('id', $id)->first();
 
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
@@ -131,7 +131,7 @@ class GuruController extends Controller
     //CARA MENGAPUS DATA
     public function delete($id)
     {
-        $data = guru::where('id', $id)->first();
+        $data = Guru::where('id', $id)->first();
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
             return response()->json([

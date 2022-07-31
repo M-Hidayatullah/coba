@@ -4,14 +4,14 @@ namespace App\Http\Controllers\Api;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\kelas;
+use App\Models\Kelas;
 use Illuminate\Support\Facades\Validator;
 
 class KelasController extends Controller
 {
     public function index()
     {
-        $data = kelas ::latest()->get();
+        $data = Kelas::latest()->get();
         return response([
             'success' => true,
             'message' => 'List Semua data kelas',
@@ -67,7 +67,7 @@ class KelasController extends Controller
     // MENAMPILKAN DATA BERDASARKAN ID
     public function show($id)
     {
-        $data = kelas ::whereId($id)->first();
+        $data = Kelas ::whereId($id)->first();
 
 
         if ($data) {
@@ -88,7 +88,7 @@ class KelasController extends Controller
     //Cara Update data
     public function update(Request $request, $id)
     {
-        $data = kelas ::where('id', $id)->first();
+        $data = Kelas ::where('id', $id)->first();
 
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
@@ -121,7 +121,7 @@ class KelasController extends Controller
     //CARA MENGAPUS DATA
     public function delete($id)
     {
-        $data = kelas::where('id', $id)->first();
+        $data = Kelas::where('id', $id)->first();
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
             return response()->json([

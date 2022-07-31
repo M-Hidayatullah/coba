@@ -11,7 +11,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $data = siswa::with('guru','kelas')->get();
+        $data = Siswa::with('guru','kelas')->get();
 
         return response()->json($data, 200);
     }
@@ -78,7 +78,7 @@ class SiswaController extends Controller
     // MENAMPILKAN DATA BERDASARKAN ID
     public function show($id)
     {
-        $data = siswa ::whereId($id)->first();
+        $data = Siswa ::whereId($id)->first();
 
 
         if ($data) {
@@ -99,7 +99,7 @@ class SiswaController extends Controller
     //Cara Update data
     public function update(Request $request, $id)
     {
-        $data = siswa ::where('id', $id)->first();
+        $data = Siswa ::where('id', $id)->first();
 
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
@@ -136,7 +136,7 @@ class SiswaController extends Controller
     //CARA MENGAPUS DATA
     public function delete($id)
     {
-        $data = siswa::where('id', $id)->first();
+        $data = Siswa::where('id', $id)->first();
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
             return response()->json([
