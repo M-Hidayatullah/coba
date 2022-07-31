@@ -51,7 +51,7 @@ class SiswaController extends Controller
 
         } else {
 
-            $data = siswa ::create([
+            $data = Siswa::create([
                 'id_guru'     => $request->input('id_guru'),
                 'id_kelas'     => $request->input('id_kelas'),
                 'nis'     => $request->input('nis'),
@@ -78,7 +78,7 @@ class SiswaController extends Controller
     // MENAMPILKAN DATA BERDASARKAN ID
     public function show($id)
     {
-        $data = Siswa ::whereId($id)->first();
+        $data = Siswa::whereId($id)->first();
 
 
         if ($data) {
@@ -99,7 +99,7 @@ class SiswaController extends Controller
     //Cara Update data
     public function update(Request $request, $id)
     {
-        $data = Siswa ::where('id', $id)->first();
+        $data = Siswa::where('id', $id)->first();
 
         // cek data dengan id yg dikirimkan
         if (empty($data)) {
