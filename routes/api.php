@@ -5,7 +5,6 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\GuruController;
 use App\Http\Controllers\Api\SiswaController;
 use App\Http\Controllers\Api\KelasController;
-use App\Http\Controllers\Api\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,7 +30,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
 Route::group(['middleware' => ['auth:api']], function () {
     Route::get('/user', App\Http\Controllers\Api\GuruController::class)->name('guru');
-    Route::get('guru', [UserController::class, 'index']);
+    Route::get('guru', [GuruController::class, 'index']);
     // GURU -------------------
 // ====> TAMBAH DATA
     Route::post('guru', [GuruController::class, 'store']);
