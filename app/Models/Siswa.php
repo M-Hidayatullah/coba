@@ -22,10 +22,10 @@ class Siswa extends Model
 
     public function guru()
     {
-        return $this->belongsTo(guru::class, 'id_guru');
+        return $this->belongsTo(Guru::class, 'id_guru');
     }
     public function kelas()
     {
-        return $this->belongsTo(kelas::class, 'id_kelas');
+        return $this->belongsTo(Kelas::class, 'id_kelas');
     }
 }
