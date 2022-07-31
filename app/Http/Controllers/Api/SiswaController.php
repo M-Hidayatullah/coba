@@ -11,7 +11,7 @@ class SiswaController extends Controller
 {
     public function index()
     {
-        $data = Siswa::with('guru','kelas')->all();
+        $data = Siswa::all();
 
         return response()->json($data, 200);
     }
